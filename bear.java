@@ -19,10 +19,21 @@ public class bear extends Actor
     }
     public void act()
     {
-        move(speed);
-        if(this.isAtEdge())
+        if(Greenfoot.isKeyDown("d"))
         {
-            speed = speed * -1;
+            move(speed);
+        }
+        if(Greenfoot.isKeyDown("a"))
+        {
+            move(speed*-1);
+        }
+        if(Greenfoot.isKeyDown("w"))
+        {
+            setLocation(getX(), getY()-speed);
+        }
+        if(Greenfoot.isKeyDown("s"))
+        {
+            setLocation(getX(), getY()+speed);
         }
     }
 }

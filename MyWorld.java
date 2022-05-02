@@ -19,7 +19,7 @@ public class MyWorld extends World
         super(600, 400, 1); 
         bear b = new bear("Jim", 3);
         addObject(b, 300, 250);
-        seal s = new seal("Bill", 4);
+        seal s = new seal("Bill", 2);
         addObject(s, 300, 150);
     }
 }
