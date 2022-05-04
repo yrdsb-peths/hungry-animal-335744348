@@ -16,5 +16,9 @@ public class bread extends Actor
     {
         // Add your action code here.
         setLocation(getX(), getY() + 2);
+        if(getY() > 390)
+        {
+            greenfoot.Greenfoot.stop();
+        }
     }
 }
