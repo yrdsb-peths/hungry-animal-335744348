@@ -17,9 +17,17 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        bear b = new bear("Jim", 3);
+        bear b = new bear("Jim", 2);
         addObject(b, 300, 250);
-        seal s = new seal("Bill", 2);
-        addObject(s, 300, 150);
+        
+        addBread();
+    }
+    
+    public void addBread()
+    {
+        int y = 0;
+        int x = Greenfoot.getRandomNumber(600);
+        bread br = new bread();
+        addObject(br, x, y);
     }
 }

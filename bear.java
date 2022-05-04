@@ -35,5 +35,16 @@ public class bear extends Actor
         {
             setLocation(getX(), getY()+speed);
         }
+        eat();
+    }
+    
+    public void eat()
+    {
+        if(isTouching(bread.class))
+        {
+            removeTouching(bread.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.addBread();
+        }
     }
 }
