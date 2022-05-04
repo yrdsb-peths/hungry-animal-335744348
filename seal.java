@@ -24,5 +24,16 @@ public class seal extends Actor
         {
             speed = speed * -1;
         }
+        eat();
+    }
+    
+    public void eat()
+    {
+        if(isTouching(bread.class))
+        {
+            removeTouching(bread.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.addBread();
+        }
     }
 }
