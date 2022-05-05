@@ -45,6 +45,7 @@ public class bear extends Actor
             removeTouching(bread.class);
             MyWorld world = (MyWorld) getWorld();
             world.addBread();
+            world.increaseScore();
         }
     }
 }

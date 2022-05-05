@@ -34,6 +34,7 @@ public class seal extends Actor
             removeTouching(bread.class);
             MyWorld world = (MyWorld) getWorld();
             world.addBread();
+            world.increaseScore();
         }
     }
 }
