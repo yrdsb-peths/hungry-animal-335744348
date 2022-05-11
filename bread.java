@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class bread extends Actor
+public class Bread extends Actor
 {
     /**
      * Act - do whatever the bread wants to do. This method is called whenever
@@ -16,9 +16,12 @@ public class bread extends Actor
     {
         // Add your action code here.
         setLocation(getX(), getY() + 4);
-        if(getY() > 390)
+        
+        MyWorld world = (MyWorld) getWorld();
+        if(getY() >= world.getHeight())
         {
-            greenfoot.Greenfoot.stop();
+            world.gameOver();
+            world.removeObject(this);
         }
     }
 }

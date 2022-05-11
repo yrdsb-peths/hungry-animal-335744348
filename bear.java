@@ -40,9 +40,9 @@ public class bear extends Actor
     
     public void eat()
     {
-        if(isTouching(bread.class))
+        if(isTouching(Bread.class))
         {
-            removeTouching(bread.class);
+            removeTouching(Bread.class);
             MyWorld world = (MyWorld) getWorld();
             world.addBread();
             world.increaseScore();
