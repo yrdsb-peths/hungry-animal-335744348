@@ -3,20 +3,38 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class bear here.
  */
-public class bear extends Actor
+public class Turtle extends Actor
 {
     /**
      * Act - do whatever the bear wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    String name;
     int speed;
+    private SimpleTimer walkTimer;
+    private int delay = 0;
     
-    public bear(String name, int speed)
+    GreenfootImage[] walk = new GreenfootImage[4];
+    public Turtle(int speed)
     {
-        this.name = name;
         this.speed = speed;
+        for (int i = 0; i < walk.length; i ++)
+        {
+            walk[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
+            walk[i].scale(160,100);
+        }
+        setImage(walk[0]);
+        walkTimer = new SimpleTimer();
     }
+    
+    //animation of turtle actor
+    int imageIndex = 0;
+    
+    public void animateTurtle()
+    {
+        setImage(walk[imageIndex]);
+        imageIndex = (imageIndex + 1) % walk.length;
+    }
+    
     public void act()
     {
         if(Greenfoot.isKeyDown("d"))
@@ -36,6 +54,7 @@ public class bear extends Actor
             setLocation(getX(), getY()+speed);
         }
         eat();
+        animateTurtle();
     }
     
     public void eat()
