@@ -12,27 +12,46 @@ public class Turtle extends Actor
     int speed;
     private SimpleTimer walkTimer;
     private int delay = 0;
+    int imageIndex = 0;
+    GreenfootImage[] walkRight = new GreenfootImage[4];
+    GreenfootImage[] walkLeft = new GreenfootImage[4];
+    private boolean isFacingRight = true;
     
-    GreenfootImage[] walk = new GreenfootImage[4];
     public Turtle(int speed)
     {
         this.speed = speed;
-        for (int i = 0; i < walk.length; i ++)
+        for (int i = 0; i < 4; i ++)
         {
-            walk[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
-            walk[i].scale(160,100);
+            walkLeft[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
+            walkLeft[i].scale(160,100);
+            walkRight[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
+            walkRight[i].mirrorHorizontally();
+            walkRight[i].scale(160,100);   
         }
-        setImage(walk[0]);
+        setImage(walkRight[0]);
         walkTimer = new SimpleTimer();
+        walkTimer.mark();
     }
     
     //animation of turtle actor
-    int imageIndex = 0;
     
     public void animateTurtle()
     {
-        setImage(walk[imageIndex]);
-        imageIndex = (imageIndex + 1) % walk.length;
+        
+        if(walkTimer.millisElapsed() > 120)
+        {
+            if (isFacingRight == true)
+            {
+                setImage(walkRight[imageIndex]);
+                imageIndex = (imageIndex + 1) % 4;
+            }
+            else 
+            {
+                setImage(walkLeft[imageIndex]);
+                imageIndex = (imageIndex + 1) % 4;
+            }
+            walkTimer.mark();
+        }
     }
     
     public void act()
@@ -40,10 +59,12 @@ public class Turtle extends Actor
         if(Greenfoot.isKeyDown("d"))
         {
             move(speed);
+            isFacingRight = true;
         }
         if(Greenfoot.isKeyDown("a"))
         {
             move(speed*-1);
+            isFacingRight = false;
         }
         if(Greenfoot.isKeyDown("w"))
         {
