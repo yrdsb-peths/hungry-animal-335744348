@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class bear2 here.
  */
-public class seal extends Actor
+public class butterfly extends Actor
 {
     /**
      * Act - do whatever the bear2 wants to do. This method is called whenever
@@ -11,11 +11,13 @@ public class seal extends Actor
      */
     String name;
     int speed;
-    
-    public seal(String name, int speed)
+    GreenfootImage bug;
+    public butterfly(String name, int speed)
     {
         this.name = name;
         this.speed = speed;
+        bug = new GreenfootImage("images/butterfly.png");
+        setImage(bug);
     }
     public void act()
     {
@@ -23,6 +25,7 @@ public class seal extends Actor
         if(this.isAtEdge())
         {
             speed = speed * -1;
+            bug.mirrorHorizontally();
         }
         eat();
     }
@@ -34,7 +37,14 @@ public class seal extends Actor
             removeTouching(Bread.class);
             MyWorld world = (MyWorld) getWorld();
             world.addBread();
-            world.increaseScore();
+            world.increaseScore(1);
+        }
+        if(isTouching(GoldBread.class))
+        {
+            removeTouching(GoldBread.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.addBread();
+            world.increaseScore(5);
         }
     }
 }

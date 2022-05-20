@@ -23,10 +23,10 @@ public class Turtle extends Actor
         for (int i = 0; i < 4; i ++)
         {
             walkLeft[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
-            walkLeft[i].scale(160,100);
+            walkLeft[i].scale(110,70);
             walkRight[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
             walkRight[i].mirrorHorizontally();
-            walkRight[i].scale(160,100);   
+            walkRight[i].scale(110,70);   
         }
         setImage(walkRight[0]);
         walkTimer = new SimpleTimer();
@@ -85,7 +85,14 @@ public class Turtle extends Actor
             removeTouching(Bread.class);
             MyWorld world = (MyWorld) getWorld();
             world.addBread();
-            world.increaseScore();
+            world.increaseScore(1);
+        }
+        if(isTouching(GoldBread.class))
+        {
+            removeTouching(GoldBread.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.addBread();
+            world.increaseScore(5);
         }
     }
 }
