@@ -47,7 +47,7 @@ public class MyWorld extends World
     {
         int y = 0;
         int x = Greenfoot.getRandomNumber(600);
-        int chance = Greenfoot.getRandomNumber(5);
+        int chance = Greenfoot.getRandomNumber(8);
         if (chance == 1)
         {
             GoldBread br = new GoldBread();

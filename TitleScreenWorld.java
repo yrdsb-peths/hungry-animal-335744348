@@ -20,7 +20,7 @@ public class TitleScreenWorld extends World
 
         Label titleLabel = new Label("Hungry Turtle", 75);
         addObject(titleLabel, 300, 200);
-        Label instructions = new Label ("Move with WASD, press space to start", 40);
+        Label instructions = new Label ("Move with A and D, press space to start", 40);
         addObject(instructions, 300, 280);
         prepare();
     }

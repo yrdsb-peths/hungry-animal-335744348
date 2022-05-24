@@ -33,6 +33,22 @@ public class Turtle extends Actor
         walkTimer.mark();
     }
     
+    public void act()
+    {
+        if(Greenfoot.isKeyDown("d"))
+        {
+            move(speed);
+            isFacingRight = true;
+        }
+        if(Greenfoot.isKeyDown("a"))
+        {
+            move(speed*-1);
+            isFacingRight = false;
+        }
+        eat();
+        animateTurtle();
+    }
+    
     //animation of turtle actor
     
     public void animateTurtle()
@@ -52,30 +68,6 @@ public class Turtle extends Actor
             }
             walkTimer.mark();
         }
-    }
-    
-    public void act()
-    {
-        if(Greenfoot.isKeyDown("d"))
-        {
-            move(speed);
-            isFacingRight = true;
-        }
-        if(Greenfoot.isKeyDown("a"))
-        {
-            move(speed*-1);
-            isFacingRight = false;
-        }
-        if(Greenfoot.isKeyDown("w"))
-        {
-            setLocation(getX(), getY()-speed);
-        }
-        if(Greenfoot.isKeyDown("s"))
-        {
-            setLocation(getX(), getY()+speed);
-        }
-        eat();
-        animateTurtle();
     }
     
     public void eat()
