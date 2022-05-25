@@ -21,7 +21,7 @@ public class MyWorld extends World
         super(600, 400, 1, false);    
         score = 0;
         Turtle t = new Turtle(3);
-        addObject(t, 300, 365);
+        addObject(t, 300, 350);
         butterfly b = new butterfly("Alex", 3);
         addObject(b, 300, 150);
         

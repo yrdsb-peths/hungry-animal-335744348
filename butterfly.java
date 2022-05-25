@@ -11,13 +11,29 @@ public class butterfly extends Actor
      */
     String name;
     int speed;
-    GreenfootImage bug;
+    GreenfootImage[] flyRight = new GreenfootImage[3];
+    GreenfootImage[] flyLeft = new GreenfootImage[3];
+    private SimpleTimer flyTimer;
+    private int delay = 0;
+    int imageIndex = 0;
+    public boolean isFacingRight = true;
+    
     public butterfly(String name, int speed)
     {
         this.name = name;
         this.speed = speed;
-        bug = new GreenfootImage("images/butterfly.png");
-        setImage(bug);
+        for (int i = 0; i < 3; i ++)
+        {
+            flyLeft[i] = new GreenfootImage("images/butterfly/fly" + i + ".png");
+            flyLeft[i].mirrorHorizontally();
+            flyLeft[i].scale(50,50);
+            flyRight[i] = new GreenfootImage("images/butterfly/fly" + i + ".png");
+            flyRight[i].scale(50,50);   
+        }
+        setImage(flyRight[0]);
+        flyTimer = new SimpleTimer();
+        flyTimer.mark();
+        setImage(flyLeft[0]);
     }
     public void act()
     {
@@ -25,9 +41,17 @@ public class butterfly extends Actor
         if(this.isAtEdge())
         {
             speed = speed * -1;
-            bug.mirrorHorizontally();
+        }
+        if (speed > 0)
+        {
+            isFacingRight = true;
+        }
+        else
+        {
+            isFacingRight = false;
         }
         eat();
+        animate();
     }
     
     public void eat()
@@ -45,6 +69,24 @@ public class butterfly extends Actor
             MyWorld world = (MyWorld) getWorld();
             world.addBread();
             world.increaseScore(5);
+        }
+    }
+    
+    public void animate()
+    {
+        if(flyTimer.millisElapsed() > 120)
+        {
+            if (isFacingRight == true)
+            {
+                setImage(flyRight[imageIndex]);
+                imageIndex = (imageIndex + 1) % 3;
+            }
+            else 
+            {
+                setImage(flyLeft[imageIndex]);
+                imageIndex = (imageIndex + 1) % 3;
+            }
+            flyTimer.mark();
         }
     }
 }

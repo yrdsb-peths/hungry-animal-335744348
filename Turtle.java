@@ -13,20 +13,20 @@ public class Turtle extends Actor
     private SimpleTimer walkTimer;
     private int delay = 0;
     int imageIndex = 0;
-    GreenfootImage[] walkRight = new GreenfootImage[4];
-    GreenfootImage[] walkLeft = new GreenfootImage[4];
+    GreenfootImage[] walkRight = new GreenfootImage[3];
+    GreenfootImage[] walkLeft = new GreenfootImage[3];
     private boolean isFacingRight = true;
     
     public Turtle(int speed)
     {
         this.speed = speed;
-        for (int i = 0; i < 4; i ++)
+        for (int i = 0; i < 3; i ++)
         {
-            walkLeft[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
-            walkLeft[i].scale(110,70);
-            walkRight[i] = new GreenfootImage("images/turtle walk/walk" + i + ".png");
-            walkRight[i].mirrorHorizontally();
-            walkRight[i].scale(110,70);   
+            walkLeft[i] = new GreenfootImage("images/turtlerocket/walk" + i + ".png");
+            walkLeft[i].mirrorHorizontally();
+            walkLeft[i].scale(130,90);
+            walkRight[i] = new GreenfootImage("images/turtlerocket/walk" + i + ".png");
+            walkRight[i].scale(130,90);   
         }
         setImage(walkRight[0]);
         walkTimer = new SimpleTimer();
@@ -59,12 +59,12 @@ public class Turtle extends Actor
             if (isFacingRight == true)
             {
                 setImage(walkRight[imageIndex]);
-                imageIndex = (imageIndex + 1) % 4;
+                imageIndex = (imageIndex + 1) % 3;
             }
             else 
             {
                 setImage(walkLeft[imageIndex]);
-                imageIndex = (imageIndex + 1) % 4;
+                imageIndex = (imageIndex + 1) % 3;
             }
             walkTimer.mark();
         }
