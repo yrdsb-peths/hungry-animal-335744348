@@ -22,7 +22,7 @@ public class MyWorld extends World
         score = 0;
         Turtle t = new Turtle(3);
         addObject(t, 300, 350);
-        butterfly b = new butterfly("Alex", 3);
+        Butterfly b = new Butterfly("Alex", 3);
         addObject(b, 300, 150);
         
         //creating a label for the score

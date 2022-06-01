@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class bear2 here.
  */
-public class butterfly extends Actor
+public class Butterfly extends Actor
 {
     /**
      * Act - do whatever the bear2 wants to do. This method is called whenever
@@ -18,7 +18,7 @@ public class butterfly extends Actor
     int imageIndex = 0;
     public boolean isFacingRight = true;
     
-    public butterfly(String name, int speed)
+    public Butterfly(String name, int speed)
     {
         this.name = name;
         this.speed = speed;
